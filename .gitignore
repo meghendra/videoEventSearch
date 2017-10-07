@@ -6,6 +6,7 @@ __pycache__/
 # Whoosh-indexes
 *.seg
 *.toc
+MAIN_WRITELOCK
 
 # C extensions
 *.so
