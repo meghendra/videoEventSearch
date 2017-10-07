@@ -24,16 +24,14 @@
       <input id="box" type="text" class="form-control" placeholder="Search for...">
     </div><!-- /input-group -->
   </div><!-- /.col-lg-6 -->
-  
-<!--   <video id="my-video" class="video-js" controls autoplay preload="auto" width="640" height="264"
-  poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
-    <source src="./video/v2.mp4" type='video/mp4'>
-    <p class="vjs-no-js">
-      To view this video please enable JavaScript, and consider upgrading to a web browser that
-      <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-    </p>
-  </video>
+  <div id='vid'>
+<!-- <video id='my-video' class='video-js' controls preload='auto' width='640' height='264' 
+  poster='MY_VIDEO_POSTER.jpg' data-setup='{}'> 
+    <source src='{{url_for("static", filename="v2.mp4")  }}' type='video/mp4'> 
+  </video> \
  -->
+
+   </div>
 
 <script>
 
@@ -43,25 +41,27 @@ var mera_data = $('#box').val();
 $.post( "upload?aunty="+mera_data)
   .done(function( retdata ) {
     console.log( "Data Loaded: " + retdata );
+    create_video();
+    video_fn(20);
+    // document.getElementById("my-video").play();
   })
   .fail(function( retdata ) {
     console.log( "Error: " + retdata );
   });
 
-
-// $.ajax({
-//   type: 'POST',
-//   url: "upload?aunty="+mera_data,
-//   // data: JSON.stringify({ "aunty" : "aao"  }),
-//   error: function(e) {
-//     console.log(e);
-//   },
-//   dataType: "json",
-//   contentType: "application/json"
-// });
-
-
 });
+
+create_video = function(){
+  var videoTag = $( "<video id='my-video' class='video-js' controls autoplay preload='auto' width='640' height='264' \
+  poster='MY_VIDEO_POSTER.jpg' data-setup='{}'> \
+    <source src='/static/v2.mp4' type='video/mp4'> \
+  </video> \
+  ");
+
+  $("#vid").append(videoTag);
+
+}
+
 
 
 video_fn = function(time){document.getElementById('my-video').addEventListener('loadedmetadata', function() {

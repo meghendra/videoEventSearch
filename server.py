@@ -16,5 +16,8 @@ def uploadData():
    topResult = searchIndexForQuery(indexDir,queryText)
    return topResult
 
+
+
+
 if __name__ == "__main__":
     app.run()
