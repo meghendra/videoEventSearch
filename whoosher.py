@@ -27,7 +27,7 @@ def createIndexFromCaptions(listOfCaptions):
     writer = ix.writer()
     for caption in listOfCaptions:
         # print "@@ title={} time={} content={}".format(caption[0].split("/")[-1], caption[1], caption[2])
-        writer.add_document(title=caption[0].split("/")[-1].decode('utf-8'), time=str(caption[1]).decode('utf-8'), content=caption[2])
+        writer.add_document(title=(caption[0].split("/")[-1].split(".")[0] + ".mp4").decode('utf-8'), time=str(caption[1]).decode('utf-8'), content=caption[2])
     writer.commit()
     return dirName
 
