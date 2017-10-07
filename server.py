@@ -10,6 +10,7 @@ def hello():
 
 @app.route("/upload", methods = ["POST"])
 def uploadData():
+   print "================received QUERY"
    # return "Hello World! " + request.args["aunty"]
    queryText = request.args["aunty"]
    topResult = searchIndexForQuery("indexdir",queryText)

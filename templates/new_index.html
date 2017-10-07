@@ -124,21 +124,21 @@ modal = function(){
             $( "#modal-video").modal();
         };
 
-create_video = function(url, time){
-  var videoTag = $( "<video id='my-video' class='video-js' controls autoplay preload='auto' width='640' height='264' \
-   data-setup='{}'> \
-    <source src='/static/" + url + "' type='video/mp4'> \
-  </video> \
-  ");
+    create_video = function(url, time){
+      var videoTag = $( "<video id='my-video' class='video-js' controls autoplay preload='auto' width='640' height='264' \
+       data-setup='{}'> \
+        <source src='/static/" + url + "' type='video/mp4'> \
+      </video> \
+      ");
 
-  $("#modal-video").append(videoTag);
+      $("#modal-video").append(videoTag);
 
- document.getElementById('my-video').addEventListener('loadedmetadata', function() {
-  this.currentTime = time;
-                            }, false);
+     document.getElementById('my-video').addEventListener('loadedmetadata', function() {
+      this.currentTime = time;
+                                }, false);
 
 
-    };
+        };
 
 
 
@@ -149,8 +149,9 @@ create_video = function(url, time){
 
       $('#butt').on('click', function(event) {
         
-   
-        $("#my-video").remove();  //destroy old video tag
+
+        $("#my-video").stop();
+        $("#my-video").remove();
 
 
         var mera_data = $('#geanie').val();
