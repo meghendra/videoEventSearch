@@ -1,7 +1,7 @@
 <html><head>
                                 <meta charset="utf-8">
                                 <meta name="viewport" content="width=device-width, initial-scale=1">
-                                <title>Aao aao...</title>
+                                <title>Exhausted tab</title>
                                 <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
                                 <style>body {
     padding: 40px 0px;   
@@ -154,9 +154,18 @@ modal = function(){
         $.post( "upload?aunty="+mera_data)
           .done(function( retdata ) {
             console.log( "Data Loaded: " + JSON.stringify(retdata));
-            create_video(1, retdata.first.url, retdata.first.time);
-            if(retdata.second)
-                create_video(2, retdata.second.url, retdata.second.time);
+            if(retdata.first.url.includes(".mp4") ){
+                create_video(1, retdata.first.url, retdata.first.time);
+                if(retdata.second)
+                    create_video(2, retdata.second.url, retdata.second.time);
+            }
+            else{
+
+                abc = "<div class='alert alert-danger' role='alert'> \
+  <strong>Oh no!</strong> Video not found. \
+</div>"
+                $("#modal-video").append(abc );
+            }
             modal();
           })
           .fail(function( retdata ) {
@@ -177,27 +186,6 @@ modal = function(){
                             </head>
                             <body style="">
                             <div class="container">
-    <nav class="navbar navbar-default" role="navigation">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">GPU killer Video annotater</a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#search">Search</a></li>
-                </ul>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-    </nav>
 </div>
 
 <!-- MODAL -->
