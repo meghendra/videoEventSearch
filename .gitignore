@@ -4,9 +4,9 @@ __pycache__/
 *$py.class
 
 # Whoosh-indexes
-*.seg
-*.toc
-MAIN_WRITELOCK
+#*.seg
+#*.toc
+#MAIN_WRITELOCK
 
 # C extensions
 *.so
