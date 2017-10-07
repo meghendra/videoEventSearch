@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, json
+from flask import Flask, render_template, request, jsonify
 from whoosher import *
 app = Flask(__name__)
 
@@ -16,7 +16,8 @@ def uploadData():
    # print listOfCaptions
    indexDir = createIndexFromCaptions(listOfCaptions)
    topResult = searchIndexForQuery(indexDir,queryText)
-   return topResult[0]
+   returnDict = { "url" : topResult[0], "time" : topResult[1]}
+   return jsonify(returnDict)
 
 
 if __name__ == "__main__":

@@ -35,7 +35,7 @@ def addCaptionsToIndex(dirName,listOfCaptions):
     ix = index.open_dir(dirName)
     writer = ix.writer()
     for caption in listOfCaptions:
-        writer.add_document(title=caption[0].split("/")[-1], time=caption[1], content=caption[2])
+        writer.add_document(title=caption[0].split("/")[-1].decode('utf-8'), time=str(caption[1]).decode('utf-8'), content=caption[2])
     writer.commit()
     return True
 
