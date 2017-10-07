@@ -124,16 +124,16 @@ modal = function(){
             $( "#modal-video").modal();
         };
 
-    create_video = function(url, time){
-      var videoTag = $( "<video id='my-video' class='video-js' controls autoplay preload='auto' width='640' height='264' \
+    create_video = function(id, url, time){
+      var videoTag = $( "<video id='my-video"+id+"' class='video-js' controls autoplay preload='auto' width='640' height='264' \
        data-setup='{}'> \
-        <source src='/static/" + url + "' type='video/mp4'> \
+        <source src='/vid/" + url + "' type='video/mp4'> \
       </video> \
       ");
 
       $("#modal-video").append(videoTag);
 
-     document.getElementById('my-video').addEventListener('loadedmetadata', function() {
+     document.getElementById('my-video'+id).addEventListener('loadedmetadata', function() {
       this.currentTime = time;
                                 }, false);
 
@@ -148,17 +148,15 @@ modal = function(){
             $('#search > form > input[type="search"]').focus();
 
       $('#butt').on('click', function(event) {
-        
-
-        $("#my-video").stop();
-        $("#my-video").remove();
 
 
         var mera_data = $('#geanie').val();
         $.post( "upload?aunty="+mera_data)
           .done(function( retdata ) {
             console.log( "Data Loaded: " + JSON.stringify(retdata));
-            create_video(retdata.url, retdata.time);
+            create_video(1, retdata.first.url, retdata.first.time);
+            if(retdata.second)
+                create_video(2, retdata.second.url, retdata.second.time);
             modal();
           })
           .fail(function( retdata ) {

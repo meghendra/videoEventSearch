@@ -51,6 +51,6 @@ def searchIndexForQuery(dirName,queryTerms):
             resultList = []
             for result in results:
                 resultList.append([result["title"],result["time"]])
-            return resultList[0]
+            return resultList
         else:
             return ["middleFinger"][0]
