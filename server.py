@@ -6,7 +6,7 @@ app = Flask(__name__)
 @app.route("/")
 def hello():
     # return "Hello World!"
-    return render_template("index.html")
+    return render_template("new_index.html")
 
 @app.route("/upload", methods = ["POST"])
 def uploadData():
