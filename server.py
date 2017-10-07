@@ -13,7 +13,7 @@ def uploadData():
    # return "Hello World! " + request.args["aunty"]
    queryText = request.args["aunty"]
    topResult = searchIndexForQuery("indexdir",queryText)
-   if(len(topResult)) > 1: 
+   if(False) > 1: 
         returnDict = { "first": {"url" : topResult[0][0], "time" : topResult[0][1]}, "second": {"url" : topResult[1][0], "time" : topResult[1][1]}}
    else :
         returnDict = { "first": {"url" : topResult[0][0], "time" : topResult[0][1]}}
