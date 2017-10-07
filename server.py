@@ -6,7 +6,7 @@ app = Flask(__name__)
 @app.route("/")
 def hello():
     # return "Hello World!"
-    return render_template("index.html")
+    return render_template("new_index.html")
 
 @app.route("/upload", methods = ["POST"])
 def uploadData():
@@ -15,7 +15,7 @@ def uploadData():
    readFromDirectory()
    indexDir = createIndexFromCaptions(listOfCaptions)
    topResult = searchIndexForQuery(indexDir,queryText)
-   return topResult
+   return topResult[0]
 
 
 if __name__ == "__main__":
