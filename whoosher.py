@@ -26,7 +26,8 @@ def createIndexFromCaptions(listOfCaptions):
     ix = create_in(dirName, schema)
     writer = ix.writer()
     for caption in listOfCaptions:
-        writer.add_document(title=caption[0].split("/")[-1], time=caption[1], content=caption[2])
+        # print "@@ title={} time={} content={}".format(caption[0].split("/")[-1], caption[1], caption[2])
+        writer.add_document(title=caption[0].split("/")[-1].decode('utf-8'), time=str(caption[1]).decode('utf-8'), content=caption[2])
     writer.commit()
     return dirName
 

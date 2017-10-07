@@ -13,6 +13,7 @@ def uploadData():
    # return "Hello World! " + request.args["aunty"]
    queryText = request.args["aunty"]
    readFromDirectory()
+   # print listOfCaptions
    indexDir = createIndexFromCaptions(listOfCaptions)
    topResult = searchIndexForQuery(indexDir,queryText)
    return topResult[0]
