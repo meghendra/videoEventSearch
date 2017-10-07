@@ -12,13 +12,13 @@ def hello():
 def uploadData():
    # return "Hello World! " + request.args["aunty"]
    queryText = request.args["aunty"]
-   readFromDirectory()
-   # print listOfCaptions
-   indexDir = createIndexFromCaptions(listOfCaptions)
-   topResult = searchIndexForQuery(indexDir,queryText)
+   topResult = searchIndexForQuery("indexdir",queryText)
    returnDict = { "url" : topResult[0], "time" : topResult[1]}
    return jsonify(returnDict)
 
 
 if __name__ == "__main__":
+    readFromDirectory()
+    # print listOfCaptions
+    createIndexFromCaptions(listOfCaptions)
     app.run()

@@ -124,10 +124,10 @@ modal = function(){
             $( "#modal-video").modal();
         };
 
-create_video = function(time){
+create_video = function(url, time){
   var videoTag = $( "<video id='my-video' class='video-js' controls autoplay preload='auto' width='640' height='264' \
    data-setup='{}'> \
-    <source src='/static/v2.mp4' type='video/mp4'> \
+    <source src='/static/" + url + "' type='video/mp4'> \
   </video> \
   ");
 
@@ -148,11 +148,16 @@ create_video = function(time){
             $('#search > form > input[type="search"]').focus();
 
       $('#butt').on('click', function(event) {
+        
+   
+        $("#my-video").remove();  //destroy old video tag
+
+
         var mera_data = $('#geanie').val();
         $.post( "upload?aunty="+mera_data)
           .done(function( retdata ) {
-            console.log( "Data Loaded: " + retdata );
-            create_video(20);
+            console.log( "Data Loaded: " + JSON.stringify(retdata));
+            create_video(retdata.url, retdata.time);
             modal();
           })
           .fail(function( retdata ) {
