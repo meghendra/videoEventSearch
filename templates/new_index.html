@@ -1,7 +1,7 @@
 <html><head>
                                 <meta charset="utf-8">
                                 <meta name="viewport" content="width=device-width, initial-scale=1">
-                                <title>Snippet - Bootsnipp.com</title>
+                                <title>Aao aao...</title>
                                 <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
                                 <style>body {
     padding: 40px 0px;   
@@ -117,26 +117,7 @@
                                 <script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
                                 <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
                                 <script type="text/javascript">$(function () {
-    $('a[href="#search"]').on('click', function(event) {
-        // event.preventDefault();
-        // $('#search').addClass('open');
-        // $('#search > form > input[type="search"]').focus();
-    });
     
-    $('#search, #search button.close').on('click keyup', function(event) {
-        if (event.target == this || event.target.className == 'close' || event.keyCode == 27) {
-            $(this).removeClass('open');
-        }
-    });
-    
-
-    
-    //Do not include! This prevents the form from submitting for DEMO purposes only!
-    $('form').submit(function(event) {
-        event.preventDefault();
-        return false;
-    });
-
 
 modal = function(){
 
@@ -145,7 +126,7 @@ modal = function(){
 
 create_video = function(time){
   var videoTag = $( "<video id='my-video' class='video-js' controls autoplay preload='auto' width='640' height='264' \
-  poster='MY_VIDEO_POSTER.jpg' data-setup='{}'> \
+   data-setup='{}'> \
     <source src='/static/v2.mp4' type='video/mp4'> \
   </video> \
   ");
@@ -157,7 +138,8 @@ create_video = function(time){
                             }, false);
 
 
-}
+    };
+
 
     $( document ).ready(function() {
         event.preventDefault();
@@ -165,8 +147,17 @@ create_video = function(time){
             $('#search > form > input[type="search"]').focus();
 
       $('#butt').on('click', function(event) {
-        create_video(20);
-        modal();
+        var mera_data = $('#geanie').val();
+        $.post( "upload?aunty="+mera_data)
+          .done(function( retdata ) {
+            console.log( "Data Loaded: " + retdata );
+            create_video(20);
+            modal();
+          })
+          .fail(function( retdata ) {
+            console.log( "Error: " + retdata );
+          });
+
         });
     });
 
@@ -215,10 +206,6 @@ create_video = function(time){
             </div>
             <div class="modal-body">
                 <div class="modal-video">
-<!--                     <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/84910153?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;color=e89a3e"
-                                webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                    </div> -->
                 </div>
             </div>
         </div>
@@ -231,10 +218,8 @@ create_video = function(time){
 
 
 <div id="search">
-    <form>
-        <input type="search" value="" placeholder="type keyword(s) here">
+        <input type="search" id="geanie"  autocomplete="off" value="" placeholder="type keyword(s) here">
         <button class="btn btn-primary" id="butt">Search</button>
-    </form>
 </div>
                             
                         </body></html>

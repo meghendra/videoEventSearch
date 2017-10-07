@@ -14,7 +14,7 @@ def uploadData():
    queryText = request.args["aunty"]
    indexDir = createIndexFromCaptions(l)
    topResult = searchIndexForQuery(indexDir,queryText)
-   return topResult
+   return topResult[0]
 
 
 
