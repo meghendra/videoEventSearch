@@ -12,11 +12,10 @@ def hello():
 def uploadData():
    # return "Hello World! " + request.args["aunty"]
    queryText = request.args["aunty"]
-   indexDir = createIndexFromCaptions(l)
+   readFromDirectory()
+   indexDir = createIndexFromCaptions(listOfCaptions)
    topResult = searchIndexForQuery(indexDir,queryText)
    return topResult
-
-
 
 
 if __name__ == "__main__":
